@@ -22,16 +22,16 @@ public class UsrArticleController {
 	public Article doWrite(String title, String body) {
 		return articleService.writeArticle(title, body);
 	}
-
+	
 	@GetMapping("/usr/article/showList")
 	@ResponseBody
 	public List<Article> showList() {
-		return articleService.articles;
+		return articleService.getArticles();
 	}
 
 	@GetMapping("/usr/article/showDetail")
 	@ResponseBody
-	public Object showDetail(int id, String title, String body) {
+	public Object showDetail(int id) {
 
 		Article foundArticle = articleService.getArticleById(id);
 
@@ -71,5 +71,7 @@ public class UsrArticleController {
 
 		return id + "번 게시물을 삭제 했습니다.";
 	}
+	
+
 
 }
