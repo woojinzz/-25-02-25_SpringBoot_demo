@@ -1,0 +1,65 @@
+# ait + x 여러 쿼리 실행
+DROP DATABASE IF EXISTS	SB_AM;
+CREATE DATABASE SB_AM;
+USE SB_AM;
+
+CREATE TABLE article(
+	id INT UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT
+	, regDate DATETIME NOT NULL
+	, updateDate DATETIME NOT NULL
+	, memberId INT UNSIGNED NOT NULL
+	, title VARCHAR(100) NOT NULL
+	, `body` TEXT NOT null
+);
+
+
+CREATE TABLE `member`(
+	id INT UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT
+	, regDate DATETIME NOT NULL
+	, updateDate DATETIME NOT NULL
+	, loginId VARCHAR(20) NOT NULL
+	, loginPw VARCHAR(100) NOT null
+	, `name` VARCHAR(20) NOT null
+	, nickname VARCHAR(20) NOT null
+	, cellphoneNum VARCHAR(20) NOT null
+	, email VARCHAR(50) NOT null
+	, authLevel INT UNSIGNED NOT NULL DEFAULT 2 COMMENT '권한 레벨 (일반 = 2, 관리자 = 1)'
+	, delStatus INT UNSIGNED NOT NULL DEFAULT 0 COMMENT '탈퇴 여부 (탈퇴 전 = 0, 탈퇴 후 = 1)'
+	, delDate DATETIME COMMENT '탈퇴 날짜'
+);
+
+INSERT INTO article
+	SET regDate = NOW()
+		, updateDate = NOW()
+		, memberId = 2
+		, title = CONCAT('제목_', RAND())
+		, body = CONCAT('내용_', RAND());
+	
+INSERT INTO `member`
+SET regDate = NOW()
+	, updateDate = NOW()
+	, loginId = 'admin'
+	, loginPw = 'admin'
+	, `name` = '관리자'
+	, nickname = 'admin'
+	, cellphoneNum = '010-1234-1234'
+	, email = 'admin@admin.com'
+	, authLevel = 1;
+
+INSERT INTO `member`
+SET regDate = NOW()
+	, updateDate = NOW()
+	, loginId = 'user1'
+	, loginPw = 'user1'
+	, `name` = '유저1'
+	, nickname = 'user1'
+	, cellphoneNum = '010-1111-1111'
+	, email = 'user1@user1.com';
+	
+		
+SELECT * FROM article ORDER BY id DESC;
+SELECT * FROM `member`;
+
+# 테이블 데이터 지움
+truncate article;
+truncate `member`;

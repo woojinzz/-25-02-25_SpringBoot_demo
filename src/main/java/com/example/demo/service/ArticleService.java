@@ -1,6 +1,5 @@
 package com.example.demo.service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
@@ -17,10 +16,14 @@ public class ArticleService {
 		this.articleDao = articleDao;
 	}
 
-	public Article writeArticle(String title, String body) {
-		return this.articleDao.writeArticle(title, body);
+	public void writeArticle(String title, String body) {
+		this.articleDao.writeArticle(title, body);
 	}
-	
+
+	public int getLastInsertId() {
+		return articleDao.getLastInsertId();
+	}
+
 	public List<Article> getArticles() {
 		return this.articleDao.getArticles();
 	}
@@ -28,15 +31,13 @@ public class ArticleService {
 	public Article getArticleById(int id) {
 		return this.articleDao.getArticleById(id);
 	}
-	
-	public void moidfyArticle(Article foundArticle, String title, String body) {
-		this.articleDao.moidfyAricle(foundArticle, title, body);
+
+	public void modifyAricle(int id, String title, String body) {
+		this.articleDao.modifyAricle(id, title, body);
 	}
-	
+
 	public void deleteArticle(Article foundArticle) {
 		this.articleDao.deleteAricle(foundArticle);
 	}
-
-
 
 }

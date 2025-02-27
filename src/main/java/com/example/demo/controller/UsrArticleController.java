@@ -20,9 +20,14 @@ public class UsrArticleController {
 	@GetMapping("/usr/article/doWrite")
 	@ResponseBody
 	public Article doWrite(String title, String body) {
-		return articleService.writeArticle(title, body);
+
+		articleService.writeArticle(title, body);
+
+		int id = articleService.getLastInsertId();
+
+		return articleService.getArticleById(id);
 	}
-	
+
 	@GetMapping("/usr/article/showList")
 	@ResponseBody
 	public List<Article> showList() {
@@ -42,7 +47,7 @@ public class UsrArticleController {
 		return foundArticle;
 	}
 
-	@GetMapping("/usr/article/doMoidfy")
+	@GetMapping("/usr/article/doModify")
 	@ResponseBody
 	public String doMoidfy(int id, String title, String body) {
 
@@ -52,9 +57,9 @@ public class UsrArticleController {
 			return id + "번 게시물은 존재하지 않습니다.";
 		}
 
-		articleService.moidfyArticle(foundArticle, title, body);
+		articleService.modifyAricle(id, title, body);
 
-		return id + "번 게시물을 삭제 했습니다.";
+		return id + "번 게시물을 수정 했습니다.";
 	}
 
 	@GetMapping("/usr/article/doDelete")
@@ -71,7 +76,5 @@ public class UsrArticleController {
 
 		return id + "번 게시물을 삭제 했습니다.";
 	}
-	
-
 
 }
