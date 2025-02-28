@@ -19,7 +19,7 @@ public class UsrMemberController {
 
 	@GetMapping("/usr/member/doJoin")
 	@ResponseBody
-	public ResultData doJoin(String loginId, String loginPw, String loginPwChk, String name, String nickname, String cellphoneNum, String email) {
+	public ResultData<Member> doJoin(String loginId, String loginPw, String loginPwChk, String name, String nickname, String cellphoneNum, String email) {
 
 		if (Util.isEmpty(loginId))
 			return ResultData.from("F-1", "아이디는 필수 입력 정보입니다.");
