@@ -36,25 +36,25 @@ INSERT INTO article
 		, body = CONCAT('내용_', RAND());
 	
 INSERT INTO `member`
-SET regDate = NOW()
-	, updateDate = NOW()
-	, loginId = 'admin'
-	, loginPw = 'admin'
-	, `name` = '관리자'
-	, nickname = 'admin'
-	, cellphoneNum = '010-1234-1234'
-	, email = 'admin@admin.com'
-	, authLevel = 1;
+	SET regDate = NOW()
+		, updateDate = NOW()
+		, loginId = 'admin'
+		, loginPw = 'admin'
+		, `name` = '관리자'
+		, nickname = 'admin'
+		, cellphoneNum = '010-1234-1234'
+		, email = 'admin@admin.com'
+		, authLevel = 1;
 
 INSERT INTO `member`
-SET regDate = NOW()
-	, updateDate = NOW()
-	, loginId = 'user1'
-	, loginPw = 'user1'
-	, `name` = '유저1'
-	, nickname = 'user1'
-	, cellphoneNum = '010-1111-1111'
-	, email = 'user1@user1.com';
+	SET regDate = NOW()
+		, updateDate = NOW()
+		, loginId = 'user1'
+		, loginPw = 'user1'
+		, `name` = '유저1'
+		, nickname = 'user1'
+		, cellphoneNum = '010-1111-1111'
+		, email = 'user1@user1.com';
 	
 		
 SELECT * FROM article ORDER BY id DESC;

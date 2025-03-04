@@ -38,5 +38,4 @@ public interface MemberDao {
 				WHERE loginId = #{loginId}
 			""")
 	public Member getMemberByLoginId(String loginId);
-
 }

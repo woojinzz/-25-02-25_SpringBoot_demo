@@ -16,12 +16,16 @@ public class ArticleService {
 		this.articleDao = articleDao;
 	}
 
-	public void writeArticle(String title, String body) {
-		this.articleDao.writeArticle(title, body);
+	public void writeArticle(int memberId, String title, String body) {
+		this.articleDao.writeArticle(memberId, title, body);
 	}
 
 	public int getLastInsertId() {
 		return articleDao.getLastInsertId();
+	}
+	
+	public Article forPrintArticle(int id) {
+		return articleDao.forPrintArticle(id);
 	}
 
 	public List<Article> getArticles() {
@@ -39,5 +43,7 @@ public class ArticleService {
 	public void deleteArticle(Article foundArticle) {
 		this.articleDao.deleteAricle(foundArticle);
 	}
+
+
 
 }

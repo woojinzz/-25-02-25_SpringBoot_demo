@@ -12,12 +12,7 @@ import com.example.demo.vo.Article;
 @Controller
 public class UsrHomeController {
 	
-	
-	UsrHomeController() {
-	}
-	
 	@GetMapping("/usr/home/main")
-	@ResponseBody
 	public String showMain() {
 		return "메인페이지";
 	}
