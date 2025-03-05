@@ -3,6 +3,7 @@ package com.example.demo.controller;
 import java.util.List;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -29,7 +30,6 @@ public class UsrArticleController {
 			return ResultData.from("F-L", "로그인 후 이용해주세요");
 		}
 		
-		
 		if (Util.isEmpty(title))
 			return ResultData.from("F-1", "제목을 입력해주세요.");
 		
@@ -43,16 +43,14 @@ public class UsrArticleController {
 		return ResultData.from("S-1", String.format("%d 번 글을 작성했습니다. ", id), articleService.getArticleById(id)) ;
 	}
 
-	@GetMapping("/usr/article/showList")
-	@ResponseBody
-	public ResultData<List<Article>> showList() {
+	@GetMapping("/usr/article/list")
+	public String showList(Model model) {
 		
 		List<Article> articles= articleService.getArticles();
 		
-		if (articles.size() == 0)
-			return ResultData.from("F-2", "내용을 입력해주세요.");
+		model.addAttribute("articles", articles);
 		
-		return ResultData.from("S-1", "게시글 목록", articles);
+		return "usr/article/list";
 	}
 
 	@GetMapping("/usr/article/showDetail")

@@ -14,10 +14,12 @@ public class UsrHomeController {
 	
 	@GetMapping("/usr/home/main")
 	public String showMain() {
-		return "메인페이지";
+		return "usr/home/main";
 	}
 	
-
-
+	@GetMapping("/")
+	public String showRoot() {
+		return "redirect:/usr/home/main";
+	}
 
 }

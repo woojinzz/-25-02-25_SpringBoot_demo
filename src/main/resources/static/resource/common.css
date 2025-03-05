@@ -1,0 +1,23 @@
+@charset "UTF-8";
+
+@font-face {
+    font-family: 'NanumHumanTTFBold';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2501-1@1.1/NanumHumanTTFBold.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+}
+html > body {
+	font-family: 'NanumHumanTTFBold';
+	text-underline-position: under;
+}
+
+.table-box-type > table {
+	width: 100%;
+}
+
+.table-box-type > table th, .table-box-type td {
+	border: 1px solid blsck;
+	padding: 10px;
+	text-align: center;
+}
+
