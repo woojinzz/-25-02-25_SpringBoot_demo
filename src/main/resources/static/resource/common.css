@@ -25,3 +25,13 @@ html > body {
 	padding: 10px;
 	text-align: center;
 }
+.btns > button, .btns > a {
+	border: 1px solid black;
+	border-radius: 7px;
+	padding: 5px;
+}
+
+.btns > button:hover, .btns > a:hover {
+	border: 1px solid black;
+	background-color: gray;
+}

@@ -23,7 +23,7 @@
 								<td>${article.id }</td>
 								<td class="hover:underline"><a href="detail?id=${article.id }">${article.title }</a></td>
 								<td>${article.writerName }</td>
-								<td>${article.updateDate }</td>
+								<td>${article.updateDate.substring(2, 16) }</td>
 							</tr>
 						</c:forEach>
 					</tbody>
