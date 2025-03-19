@@ -11,7 +11,10 @@ import com.example.demo.service.ArticleService;
 import com.example.demo.util.Util;
 import com.example.demo.vo.Article;
 import com.example.demo.vo.ResultData;
+import com.example.demo.vo.Rq;
+import com.example.demo.vo.Rq;
 
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 
 @Controller
@@ -54,22 +57,16 @@ public class UsrArticleController {
 	}
 
 	@GetMapping("/usr/article/detail")
-	public String showDetail(HttpSession session, Model model, int id) {
+	public String showDetail(HttpServletRequest req, Model model, int id) {
+		
+		Rq rq = (Rq) req.getAttribute("rq");
 
-		int loginedMemberId = 0;
-		
-		if (session.getAttribute("loginedMemberId") != null) {
-			loginedMemberId = (int) session.getAttribute("loginedMemberId");
-		}
-		
 		Article article = articleService.forPrintArticle(id);
 
 		if (article == null) return "게시물이 없습니다";
-//			return ResultData.from("F-1", String.format("%d 번 게시물은 존재하지 않습니다.", id));
-//		ResultData.from("S-1", String.format("%d 번 상세보기.", id) , foundArticle);
 
 		model.addAttribute("article", article);
-		model.addAttribute("loginedMemberId", loginedMemberId);
+		model.addAttribute("loginedMemberId", rq.getLoginedMemberId());
 		return "usr/article/detail";
 	}
 
@@ -97,22 +94,8 @@ public class UsrArticleController {
 	@GetMapping("/usr/article/doDelete")
 	@ResponseBody
 	public String doDelete(HttpSession session, int id) {
-		
-//		if (session.getAttribute("loginedMemberId") == null) {
-//			return ResultData.from("F-L", "로그인 후 이용해주세요");
-//		}
 
-		Article article = articleService.getArticleById(id);
-
-//		if (foundArticle == null) {
-//			return  ResultData.from("F-1", String.format("%d 번 게시물은 존재하지 않습니다.", id));
-//		}
-//		
-//		if ((int) session.getAttribute("loginedMemberId") != foundArticle.getMemberId()) {
-//			return ResultData.from("F-A", "게시글 권한이 없습니다.");
-//		}
-
-		articleService.deleteArticle(article);
+		articleService.deleteArticle(id);
 
 		return Util.jsReplace(String.format("%d 번 게시물을 삭제 했습니다.", id), "list");
 	}

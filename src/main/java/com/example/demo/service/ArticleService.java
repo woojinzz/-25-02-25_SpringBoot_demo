@@ -40,8 +40,8 @@ public class ArticleService {
 		this.articleDao.modifyAricle(id, title, body);
 	}
 
-	public void deleteArticle(Article foundArticle) {
-		this.articleDao.deleteAricle(foundArticle);
+	public void deleteArticle(int id) {
+		this.articleDao.deleteAricle(id);
 	}
 
 

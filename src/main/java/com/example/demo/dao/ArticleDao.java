@@ -71,7 +71,7 @@ public interface ArticleDao {
 			DELETE FROM article
 				WHERE id = #{id}
 			""")
-	public void deleteAricle(Article foundArticle);
+	public void deleteAricle(int id);
 
 	
 
