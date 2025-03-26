@@ -1,11 +1,14 @@
 package com.example.demo.controller;
 
+import java.util.List;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.example.demo.service.MemberService;
 import com.example.demo.util.Util;
+import com.example.demo.vo.Article;
 import com.example.demo.vo.Member;
 import com.example.demo.vo.ResultData;
 
@@ -86,6 +89,14 @@ public class UsrMemberController {
 	
 		return ResultData.from("S-1", String.format("%s 님이 로그인 되었습니다.", member.getNickname()));
 
+	}
+	
+	@GetMapping("/usr/member/login")
+	public String login(HttpSession session) {
+	
+		return "usr/member/login";
+		
+	
 	}
 	
 	@GetMapping("/usr/member/doLogout")

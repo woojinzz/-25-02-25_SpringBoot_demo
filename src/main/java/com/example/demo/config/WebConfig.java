@@ -6,16 +6,20 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import com.example.demo.interceptor.BeforActionInterceptor;
 import com.example.demo.interceptor.NeedLoginInterceptor;
+import com.example.demo.interceptor.NeedLogoutInterceptor;
 
 @Configuration
 public class WebConfig implements WebMvcConfigurer {
 
 	private BeforActionInterceptor beforActionInterceptor;
 	private NeedLoginInterceptor needLoginInterceptor;
+	private NeedLogoutInterceptor needLogoutInterceptor;
 
-	public WebConfig(BeforActionInterceptor beforActionInterceptor, NeedLoginInterceptor needLoginInterceptor) {
+	public WebConfig(BeforActionInterceptor beforActionInterceptor, NeedLoginInterceptor needLoginInterceptor,
+			NeedLogoutInterceptor needLogoutInterceptor) {
 		this.beforActionInterceptor = beforActionInterceptor;
 		this.needLoginInterceptor = needLoginInterceptor;
+		this.needLogoutInterceptor = needLogoutInterceptor;
 	}
 
 	@Override
@@ -27,5 +31,7 @@ public class WebConfig implements WebMvcConfigurer {
 				.addPathPatterns("/usr/article/doModify").addPathPatterns("/usr/article/doDelete")
 				.addPathPatterns("/usr/member/doLogout");
 
+		registry.addInterceptor(needLogoutInterceptor).addPathPatterns("/usr/member/join")
+				.addPathPatterns("/usr/member/doJoin").addPathPatterns("/usr/member/doLogin");
 	}
 }

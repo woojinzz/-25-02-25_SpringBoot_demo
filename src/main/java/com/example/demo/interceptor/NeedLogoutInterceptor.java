@@ -9,16 +9,16 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 @Component
-public class NeedLoginInterceptor implements HandlerInterceptor {
+public class NeedLogoutInterceptor implements HandlerInterceptor {
 
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
 
 		Rq rq = (Rq) request.getAttribute("rq");
 		
-		if (rq.getLoginedMemberId() == 0) {
-			rq.jsPrintReplace("로그인 후 이용해 주세요.!", "/");
-			
+		if (rq.getLoginedMemberId() != 0) {
+			rq.jsPrintReplace("로그아웃 후 이용해 주세요.!", "/");
+		
 			return false; 
 		}
 
