@@ -7,6 +7,9 @@
 <head>
 <meta charset="UTF-8">
 <title>${pageTitle }</title>
+<!-- daisy UI  -->
+<link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 <!-- 테일윈드 -->
 <script src="https://cdn.tailwindcss.com"></script>
 <!-- 폰트어썸 -->
@@ -29,11 +32,11 @@
 			<li class="hover:underline"><a class="h-full px-3 flex items-center" href="/"><span>HOME</span></a></li>
 			<li class="hover:underline"><a class="h-full px-3 flex items-center" href="/usr/article/list"><span>LIST</span></a></li>
 			
-			<c:if test="${rq.getloginedMemberId() == 0}">
+			<c:if test="${rq.getLoginedMemberId() == 0}">
 				<li class="hover:underline"><a class="h-full px-3 flex items-center" href="/usr/member/login"><span>LOGIN</span></a></li>
 			</c:if>
 			
-			<c:if test="${rq.getloginedMemberId() != 0}">
+			<c:if test="${rq.getLoginedMemberId() != 0}">
 				<li class="hover:underline"><a class="h-full px-3 flex items-center" href="/usr/member/doLogout"><span>LOGOUT</span></a></li>
 			</c:if>
 		</ul>

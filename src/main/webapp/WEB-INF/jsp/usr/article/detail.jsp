@@ -34,9 +34,9 @@
 			</div>
 			
 			<div class="btns mt-3 text-sm">
-			<button onclick="history.back();">뒤로가기</button>
+			<button class="btn btn-neutral" onclick="history.back();">뒤로가기</button>
 			
-			<c:if test="${article.memberId == loginedMemberId}">
+			<c:if test="${article.memberId == rq.getLoginedMemberId()}">
 				<a href="modify?id=${article.id }">수정</a>
 				<a href="doDelete?id=${article.id}" onclick="if(confirm('정말 삭제하시겠습니까?') == false) return false;">삭제</a>
 			</c:if>

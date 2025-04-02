@@ -8,7 +8,6 @@
 
 
 <script type="text/javascript">
-
 	const loginForm_onSubmit = founction(form) {
 		form.loginId.value = form.loginId.value.trim();
 		form.loginPw.value = form.loginPw.value.trim();
@@ -24,28 +23,28 @@
 			form.loginPw.focus();
 			return;
 		}
+		
 		form.submit();
 	}
-
 </script>
 
 	<section class="mt-8 text-lg">
 		<div class="container mx-auto px-3">
 			<form action="doLogin" method="POST" onsubmit="loginForm_onSubmit(this); return false;">
 				<div class="table-box-type">
-					<table>
-						<tr>
-							<th>아이디</th>
-							<td><input class="w-96" type="text" name="loginId" placeholder="아이디를 입력해주세요" /></td>
-						</tr>
-						<tr>
-							<th>비밀번호</th>
-							<td><input class="w-96" type="text" name="loginPw" placeholder="비밀번호를 입력해주세요" /></td>
-						</tr>
-						<tr>
-							<td colspan="2"><div class="btns" ><button>로그인 버튼</button></div></td>
-						</tr>
-					</table>
+				 	<div class="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
+					    <div class="card-body">
+					        <fieldset class="fieldset">
+						         <label class="fieldset-label">아이디</label>
+						         <input type="text" class="input" name="loginId" placeholder="아이디를 입력해주세요" />
+						         <label class="fieldset-label">비밀번호</label>
+						         <input type="password" class="input" name="loginPw" placeholder="비밀번호를 입력해주세요" />
+						         <div><a class="link link-hover">Forgot password?</a></div>
+						         <button class="btn btn-neutral mt-4">Login</button>
+					        </fieldset>
+					     </div>
+				    </div>
+								
 				</div>
 			</form>
 			
