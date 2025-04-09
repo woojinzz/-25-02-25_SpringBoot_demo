@@ -48,6 +48,10 @@ public class ArticleService {
 		return this.articleDao.getBoardNameById(boardId);
 	}
 
+	public int getArticlesCnt(int boardId) {
+		return this.articleDao.getArticlesCnt(boardId);
+	}
+
 
 
 }

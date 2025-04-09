@@ -77,6 +77,13 @@ public interface ArticleDao {
 			""")
 	public String getBoardNameById(int boardId);
 
+	@Select("""
+			SELECT COUNT(id)
+				FROM article
+				WHERE boardId = #{boardId}
+			""")
+	public int getArticlesCnt(int boardId);
+
 	
 
 }

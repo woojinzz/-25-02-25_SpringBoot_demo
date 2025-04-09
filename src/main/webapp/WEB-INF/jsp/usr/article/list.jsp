@@ -8,6 +8,7 @@
 <%@ include file="../../common/head.jsp" %>
 	<section class="mt-8 text-lg">
 		<div class="container mx-auto px-3">
+			<div>게시글 수 : ${articlesCnt}</div>
 			<div class="table-box-type">
 				<table>
 					<thead>

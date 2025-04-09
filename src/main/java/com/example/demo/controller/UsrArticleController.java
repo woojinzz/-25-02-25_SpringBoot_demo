@@ -49,10 +49,12 @@ public class UsrArticleController {
 	public String list(Model model, int boardId) {
 		
 		String boardName = articleService.getBoardNameById(boardId);
+		int articlesCnt =  articleService.getArticlesCnt(boardId);
 		List<Article> articles= articleService.getArticles(boardId);
 		
 		model.addAttribute("articles", articles);
 		model.addAttribute("boardName", boardName);
+		model.addAttribute("articlesCnt", articlesCnt);
 		
 		return "usr/article/list";
 	}
