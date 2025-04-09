@@ -31,16 +31,17 @@ public interface ArticleDao {
 				FROM article A
 				INNER JOIN `member` M
 				ON A.memberId = M.id
+				WHERE A.boardId = #{boardId}
 				ORDER BY A.id DESC
 			""")
-	public List<Article> getArticles();
+	public List<Article> getArticles(int boardId);
 	
 	@Select("""
 			SELECT A.*, M.nickname `writerName`
 				FROM article A
 				INNER JOIN `member` M
 				ON A.memberId = M.id
-				WHERE A.id = #{id}
+				WHERE A.id = #{id} 
 				ORDER BY A.id DESC
 			""")	
 	public Article forPrintArticle(int id);
@@ -68,6 +69,13 @@ public interface ArticleDao {
 				WHERE id = #{id}
 			""")
 	public void deleteAricle(int id);
+
+	@Select("""
+			SELECT `name`
+				FROM board
+				WHERE id = #{boardId}
+			""")
+	public String getBoardNameById(int boardId);
 
 	
 

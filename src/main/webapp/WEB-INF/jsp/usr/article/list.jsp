@@ -2,7 +2,8 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
-<c:set var="pageTitle" value="ARTICLE LIST" />
+
+<c:set var="pageTitle" value="${boardName} 게시판"  />
 
 <%@ include file="../../common/head.jsp" %>
 	<section class="mt-8 text-lg">
@@ -29,6 +30,13 @@
 					</tbody>
 				</table>
 			</div>
+			
+			<c:if test="${rq.getLoginedMemberId() != 0}">
+				<div class="flex justify-end mt-2 mr-3">
+					<a class="btn btn-active btn-sm" href="write">글쓰기</a>
+				</div>
+			</c:if>
+			
 		</div>
 	</section>
 <%@ include file="../../common/foot.jsp" %>
