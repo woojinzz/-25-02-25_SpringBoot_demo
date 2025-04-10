@@ -7,7 +7,7 @@
 <%@ include file="../../common/head.jsp" %>
 
 <script type="text/javascript">
-	const modifyForm_onSubmit = founction(form) {
+	const writeForm_onSubmit = founction(form) {
 		form.title.value = form.title.value.trim();
 		form.body.value = form.body.value.trim();
 		
@@ -29,9 +29,29 @@
 
 	<section class="mt-8 text-lg">
 		<div class="container mx-auto px-3">
-			<form action="doWrite" method="post" onsubmit="modifyForm_onSubmit(this); return false;">
+			<form action="doWrite" method="post" onsubmit="writeForm_onSubmit(this); return false;">
 				<div class="table-box-type">
 					<table>
+						<tr>
+							<th>게시판</th>
+							<td>
+								<div class="flex">
+									<div>
+										<label class="flex item-center">
+											<input class="radio radio-sm" type="radio" name="boardId" value="1" checked>
+											&nbsp;&nbsp;공지사항
+										</label>
+									</div>
+									<div class="w-20"></div>
+									<div>
+										<label class="flex item-center">
+											<input class="radio radio-sm" type="radio" name="boardId" value="2">
+											&nbsp;&nbsp;자유
+										</label>
+									</div>
+								</div>
+							</td>
+						</tr>
 						<tr>
 							<th>제목</th>
 							<td><input class="input" type="text" name="title"></td>

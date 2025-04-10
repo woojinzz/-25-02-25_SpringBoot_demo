@@ -11,27 +11,25 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.example.demo.service.ArticleService;
 import com.example.demo.util.Util;
 import com.example.demo.vo.Article;
-import com.example.demo.vo.ResultData;
 import com.example.demo.vo.Rq;
 
-import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 
 @Controller
 public class UsrArticleController {
 	private ArticleService articleService;
+	private Rq rq;
 
-	public UsrArticleController(ArticleService articleService) {
+	public UsrArticleController(ArticleService articleService, Rq rq) {
 		this.articleService = articleService;
 	}
 
 	@PostMapping("/usr/article/doWrite")
 	@ResponseBody
-	public String doWrite(HttpServletRequest req, String title, String body) {
-		
-		Rq rq = (Rq) req.getAttribute("rq");
+	public String doWrite(String title, String body, int boardId) {
+		System.out.println("boardId" + boardId);
 
-		articleService.writeArticle(rq.getLoginedMemberId(), title, body);
+		articleService.writeArticle(rq.getLoginedMemberId(), title, body, boardId);
 		
 		int id = articleService.getLastInsertId();
 		
