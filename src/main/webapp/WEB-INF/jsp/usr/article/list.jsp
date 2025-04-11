@@ -38,6 +38,14 @@
 				</div>
 			</c:if>
 			
+			<div>
+				<div>
+					<c:forEach begin="${from }" end="${end } var="i">
+						<a href="?boardId=">${i }</a>
+					</c:forEach>
+				</div>
+			</div>
+			
 		</div>
 	</section>
 <%@ include file="../../common/foot.jsp" %>

@@ -34,8 +34,9 @@ public interface ArticleDao {
 				ON A.memberId = M.id
 				WHERE A.boardId = #{boardId}
 				ORDER BY A.id DESC
+				LIMIT #{limitFrom}, #{itemsInAPage}
 			""")
-	public List<Article> getArticles(int boardId);
+	public List<Article> getArticles(int boardId, int limitFrom, int itemsInAPage);
 	
 	@Select("""
 			SELECT A.*, M.nickname `writerName`

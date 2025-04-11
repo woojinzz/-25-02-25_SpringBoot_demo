@@ -28,8 +28,8 @@ public class ArticleService {
 		return articleDao.forPrintArticle(id);
 	}
 
-	public List<Article> getArticles(int boardId) {
-		return this.articleDao.getArticles(boardId);
+	public List<Article> getArticles(int boardId, int limitFrom, int itemsInAPage) {
+		return this.articleDao.getArticles(boardId, limitFrom, itemsInAPage);
 	}
 
 	public Article getArticleById(int id) {
