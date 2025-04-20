@@ -38,14 +38,25 @@
 				</div>
 			</c:if>
 			
-			<div>
-				<div>
-					<c:forEach begin="${from }" end="${end } var="i">
-						<a href="?boardId=">${i }</a>
+			<div class="mt-3 mb-3 flex justify-center">
+				<div class="join">
+				
+					<c:if test="${from != 1 }">
+						<a class="join-item btn btn-sm" href="?boardId=${param.boardId }&cPage=1"><i class="fa-solid fa-angles-left"></i></a>
+						<a class="join-item btn btn-sm" href="?boardId=${param.boardId }&cPage=${from - 1}"><i class="fa-solid fa-caret-left"></i></a>
+					</c:if>
+				
+					<c:forEach begin="${from }" end="${end }" var="i">
+						<a class="join-item btn btn-sm ${cPage == i ? 'btn-active' : '' }"href="?boardId=${param.boardId }&cPage=${i }">${i }</a>
 					</c:forEach>
+				
+					<c:if test="${end != totalPageCnt }">
+						<a class="join-item btn btn-sm" href="?boardId=${param.boardId}&cPage=${end + 1 }"><i class="fa-solid fa-caret-right"></i></a>
+						<a class="join-item btn btn-sm" href="?boardId=${param.boardId}&cPage=${totalPageCnt }"><i class="fa-solid fa-angles-right"></i></a>
+					</c:if>
+					
 				</div>
 			</div>
-			
-		</div>
+	
 	</section>
 <%@ include file="../../common/foot.jsp" %>

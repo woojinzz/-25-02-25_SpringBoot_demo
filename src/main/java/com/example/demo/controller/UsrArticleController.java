@@ -55,16 +55,19 @@ public class UsrArticleController {
 		
 		List<Article> articles= articleService.getArticles(boardId, limitFrom, itemsInAPage);
 		
+    	int from = ((cPage -1) / 10) * 10 + 1; // 1~10 이면 1, 11~20 = 2
+    	int end = (((cPage -1) / 10) + 1) * 10;// * 10 으로 맨 마지막 페이지 구함
     	
-    	int from = ((cPage -1) / 10) * 10 + 1;
-    	int end = (((cPage -1) / 10) + 1) * 10 ;
-    	
-    	int totalPagesCnt = (int) Math.ceil((double) articlesCnt / itemsInAPage); 
+    	int totalPageCnt = (int) Math.ceil((double) articlesCnt / itemsInAPage); 
 		
+    	if (end >= totalPageCnt) {
+    		end = totalPageCnt;
+    	}
+    	
 		model.addAttribute("cPage", cPage);
 		model.addAttribute("from", from);
 		model.addAttribute("end", end);
-		model.addAttribute("totalPagesCnt", totalPagesCnt);
+		model.addAttribute("totalPageCnt", totalPageCnt);
 		model.addAttribute("articles", articles);
 		model.addAttribute("boardName", boardName);
 		model.addAttribute("articlesCnt", articlesCnt);
