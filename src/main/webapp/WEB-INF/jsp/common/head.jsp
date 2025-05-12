@@ -18,6 +18,9 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <!-- 공통 css -->
 <link rel="stylesheet" href="/resource/common.css" />
+
+<!-- 공통 js 파일-->
+<script src="/resource/common.js"></script>
 <!-- 폰트 -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

@@ -15,11 +15,11 @@
 		<div class="container mx-auto px-3">
 				<div class="mb-2 ml-3 text-sm flex justify-between item-end">
 					<div><span>게시글 수 : ${articlesCnt}</span></div>
-					
 					<form>
 						<div>
 							<input type="hidden" name="boardId" value="${param.boardId}"/>
-							<select class="select select-bordered select-sm w-30" name="searchKeywordType" id="">
+							
+							<select data-value= "${param.searchKeywordType}" class="select select-bordered select-sm w-30" name="searchKeywordType">
 								<option value="title">제목</option>
 								<option value="body">내용</option>
 								<option value="title,body">제목 + 내용</option>
@@ -30,16 +30,23 @@
 						</div>
 					</form>
 				</div>
-			
-			
+				
 			<div class="table-box-type">
 				<table>
+					<colgroup>
+						<col width= "60"/>
+						<col width= "200"/>
+						<col width= "80"/>
+						<col width= "100"/>
+						<col width= "60"/>
+					</colgroup>
 					<thead>
 						<tr>
 							<th>번호</th>
 							<th>제목</th>
 							<th>작성자</th>
 							<th>작성일</th>
+							<th>조회수</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -49,6 +56,7 @@
 								<td class="hover:underline"><a href="detail?id=${article.id }">${article.title }</a></td>
 								<td>${article.writerName }</td>
 								<td>${article.updateDate.substring(2, 16) }</td>
+								<td>${article.views }</td>
 							</tr>
 						</c:forEach>
 					</tbody>
